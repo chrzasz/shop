@@ -11,5 +11,9 @@ public class ShopApplication {
     public static void main(String[] args) {
         SpringApplication.run(ShopApplication.class, args);
     }
-    
+
+    @EventListener(ApplicationReadyEvent.class)
+    public void intro() {
+        System.out.println("--- Shop started ---");
+    }
 }
