@@ -3,6 +3,7 @@ package pl.inome.shop.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import pl.inome.shop.model.Product;
+import pl.inome.shop.repository.ProductRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,24 +11,19 @@ import java.util.List;
 @Service
 public class ProductService {
 
-    private List<Product> products;
+    ProductRepository products;
 
     @Autowired
-    public ProductService() {
-        products = new ArrayList<>();
+    public ProductService(ProductRepository products) {
+        this.products = products;
     }
 
-
-    public List<Product> getProducts() {
-        return products;
+    public List<Product> getAllProducts() {
+        return new ArrayList<>(products.getAllProducts());
     }
 
     public void addProduct(Product product) {
-        this.products.add(product);
-    }
-
-    public void showProducts() {
-        products.forEach(System.out::println);
+        products.createProduct(product);
     }
 
 }

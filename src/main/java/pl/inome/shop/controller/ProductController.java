@@ -4,22 +4,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.inome.shop.model.Product;
-import pl.inome.shop.service.ProductService;
+import pl.inome.shop.repository.ProductRepository;
 
-import java.util.List;
+import java.util.Collection;
 
 @RestController
 public class ProductController {
 
-    private ProductService productService;
+    private ProductRepository productRepository;
 
     @Autowired
-    public ProductController(ProductService productService) {
-        this.productService = productService;
+    public ProductController(ProductRepository productRepository) {
+        this.productRepository = productRepository;
     }
-
     @GetMapping
-    public List<Product> getProducts() {
-        return productService.getProducts();
+    public Collection<Product> getAllProducts() {
+        return productRepository.getAllProducts();
     }
 }
