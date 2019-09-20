@@ -1,42 +1,46 @@
 package pl.inome.shop.utils;
 
+import org.apache.commons.math3.util.Precision;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 import java.text.DecimalFormat;
 
 @Component
+@ConfigurationProperties(prefix = "shop-price-random-generator")
 public class PriceGenerator {
 
-    private String randomPriceText;
+    private double min;
+    private double max;
 
-    public PriceGenerator() {
+
+    public double getMin() {
+        return min;
     }
 
-    public PriceGenerator(String randomPrice) {
-        this.randomPriceText = randomPrice;
+    public void setMin(double min) {
+        this.min = min;
     }
 
-    public String getRandomPrice() {
-        return randomPriceText;
+    public double getMax() {
+        return max;
     }
 
-    private Double randomPrice(Double min, Double max) {
+    public void setMax(double max) {
+        this.max = max;
+    }
 
+    // ************ custom methods ************
+
+    public Double randomPrice() {
         double range = max - min;
-        return min + Math.random() * range;
+        return Precision.round(min + Math.random() * range, 2);
     }
 
-    private String randomPriceFormatted(Double randomPrice) {
-
+    public String randomPriceFormatted(Double randomPrice) {
         DecimalFormat formater = new DecimalFormat("#0.00");
         return formater.format(randomPrice);
     }
 
-    public static void main(String[] args) {
-
-        PriceGenerator priceGenerator = new PriceGenerator();
-        System.out.println(priceGenerator.randomPriceFormatted(priceGenerator.randomPrice(50d, 300d)));
-
-    }
 
 }
