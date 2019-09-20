@@ -1,9 +1,9 @@
 package pl.inome.shop.utils;
 
-import org.apache.commons.math3.util.Precision;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 @Component
@@ -32,9 +32,9 @@ public class PriceGenerator {
 
     // ************ custom methods ************
 
-    public Double randomPrice() {
+    public BigDecimal randomPrice() {
         double range = max - min;
-        return Precision.round(min + Math.random() * range, 2);
+        return BigDecimal.valueOf(min + Math.random() * range).setScale(2, BigDecimal.ROUND_HALF_UP);
     }
 
     public String randomPriceFormatted(Double randomPrice) {

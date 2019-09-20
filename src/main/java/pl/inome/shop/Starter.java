@@ -27,11 +27,11 @@ public class Starter implements CommandLineRunner {
     public void run(String... args) {
         System.out.println("--- Shop started ---");
 
-        productService.addProduct(new Product("P1", BigDecimal.valueOf(priceGenerator.randomPrice())));
-        productService.addProduct(new Product("P2", BigDecimal.valueOf(priceGenerator.randomPrice())));
-        productService.addProduct(new Product("P3", BigDecimal.valueOf(priceGenerator.randomPrice())));
-        productService.addProduct(new Product("P4", BigDecimal.valueOf(priceGenerator.randomPrice())));
-        productService.addProduct(new Product("P5", BigDecimal.valueOf(priceGenerator.randomPrice())));
+        productService.addProduct(new Product("P1", priceGenerator.randomPrice()));
+        productService.addProduct(new Product("P2", priceGenerator.randomPrice()));
+        productService.addProduct(new Product("P3", priceGenerator.randomPrice()));
+        productService.addProduct(new Product("P4", priceGenerator.randomPrice()));
+        productService.addProduct(new Product("P5", priceGenerator.randomPrice()));
 
         productService.showProducts();
         System.out.println("Added products count: " + productService.getProducts().stream().count());
