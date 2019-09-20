@@ -6,12 +6,15 @@ Pakiet „PLUS” dodatkowo umożliwia doliczenie do ceny wynikowej podatku VAT.
 Pakiet „PRO” oprócz wyliczania podatku ma również możliwość wyliczenia rabatu, którego wartość jest uwzględniona w pliku konfiguracyjnym.
 Aplikacja na start dodaje 5 dowolnych produktów z losowaną ceną (w przedziale 50-300 zł) i wyświetla ich sumaryczną cenę.
 
-##program properties
+## program properties
 Generowanie cen domyślnych produktów w granicach zbioru podanego w pliku application.properties.
 Domyślny zakres zbioru to <min=50, max=300>
 
 `
 shop-price-random-generator.min=50d
+`
+
+`
 shop-price-random-generator.max=300d
 `
 
