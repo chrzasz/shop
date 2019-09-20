@@ -1,7 +1,5 @@
 package pl.inome.shop.service;
 
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Service;
 import pl.inome.shop.model.Product;
 
@@ -30,9 +28,8 @@ public class ProductService {
 
     }
 
-    @EventListener(ApplicationReadyEvent.class)
-    public void showProducts() {
-        products.forEach(System.out::println);
+    public List<Product> getProducts() {
+        return products;
     }
 
 }
