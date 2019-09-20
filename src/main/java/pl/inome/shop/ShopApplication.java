@@ -2,8 +2,6 @@ package pl.inome.shop;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.context.event.EventListener;
 
 @SpringBootApplication
 public class ShopApplication {
@@ -12,8 +10,4 @@ public class ShopApplication {
         SpringApplication.run(ShopApplication.class, args);
     }
 
-    @EventListener(ApplicationReadyEvent.class)
-    public void intro() {
-        System.out.println("--- Shop started ---");
-    }
 }
