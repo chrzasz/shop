@@ -1,29 +1,30 @@
 package pl.inome.shop.repository;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import pl.inome.shop.model.Product;
 import pl.inome.shop.utils.PriceGenerator;
 
 import javax.annotation.PostConstruct;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Repository
-public class ProductStartRepository implements ProductRepository {
+public class Cart implements CartRepository {
 
-    Map<String, Product> products = new HashMap<>();
+    private Map<String, Product> products = new HashMap<>();
 
-    PriceGenerator priceGenerator;
+    private PriceGenerator priceGenerator;
 
-    public ProductStartRepository() {
+    public Cart() {
     }
 
-    @Autowired
-    public ProductStartRepository(PriceGenerator priceGenerator) {
+    public Cart(Map<String, Product> products, PriceGenerator priceGenerator) {
+        this.products = products;
         this.priceGenerator = priceGenerator;
     }
+
 
     @Override
     public void createProduct(Product product) {
@@ -31,23 +32,14 @@ public class ProductStartRepository implements ProductRepository {
     }
 
     @Override
-    public Collection<Product> getAllProducts() {
-        return products.values();
-    }
-
-    @Override
-    public Product getProduct(String name) {
-        return products.get(name);
-    }
-
-    @Override
-    public void deteleProduct(String name) {
-        products.remove(name);
+    public List<Product> getAllProducts() {
+        return new ArrayList<>(products.values());
     }
 
     @Override
     @PostConstruct
     public void build() {
+
         createProduct(new Product("P1", priceGenerator.randomPrice()));
         createProduct(new Product("P2", priceGenerator.randomPrice()));
         createProduct(new Product("P3", priceGenerator.randomPrice()));
