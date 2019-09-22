@@ -1,4 +1,4 @@
-package pl.inome.shop.model;
+package pl.inome.shop.domain;
 
 import java.math.BigDecimal;
 

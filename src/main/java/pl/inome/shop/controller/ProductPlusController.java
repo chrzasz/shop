@@ -6,7 +6,7 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Controller;
-import pl.inome.shop.model.Product;
+import pl.inome.shop.domain.Product;
 import pl.inome.shop.service.ProductService;
 
 import java.math.BigDecimal;

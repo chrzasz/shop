@@ -6,10 +6,11 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Controller;
-import pl.inome.shop.model.Product;
+import pl.inome.shop.domain.Product;
 import pl.inome.shop.service.ProductService;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -32,7 +33,7 @@ public class ProductProController {
     public void getAllProductsWithTotalPrice() {
         System.out.println(productService.getAllProducts());
         System.out.println("\r\nProducts with VAT " + vat + "% :");
-        List<Product> productsWithVat;
+        List<Product> productsWithVat = new ArrayList<>();
         productsWithVat = productService.getAllProducts();
 
         for (int i = 0; i < productsWithVat.size(); i++) {
@@ -51,7 +52,7 @@ public class ProductProController {
         System.out.println("Total Price: " + totalPrice);
 
         System.out.println("\r\nProducts with VAT " + vat + " and discount " + discount + "% :");
-        List<Product> productsWithVatAndDiscount;
+        List<Product> productsWithVatAndDiscount = new ArrayList<>();
         productsWithVatAndDiscount = productsWithVat;
 
         for (int i = 0; i < productsWithVatAndDiscount.size(); i++) {

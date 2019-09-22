@@ -2,16 +2,17 @@ package pl.inome.shop.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pl.inome.shop.model.Product;
+import pl.inome.shop.domain.Product;
 import pl.inome.shop.repository.CartRepository;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ProductService {
 
-    private CartRepository products;
+    CartRepository products;
 
     @Autowired
     public ProductService(CartRepository products) {
@@ -19,7 +20,7 @@ public class ProductService {
     }
 
     public List<Product> getAllProducts() {
-        return products.getAllProducts();
+        return new ArrayList<>(products.getAllProducts());
     }
 
     public void addProduct(Product product) {
