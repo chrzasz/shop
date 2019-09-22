@@ -21,7 +21,7 @@ shop-price-random-generator.max=300d
 Można zmienić zakres generowania cen np. na zakres <min=1, max=10> wywołując program z parametrem: 
 
 `
-java -jar shop-0.0.1-SNAPSHOT.jar --shop-price-random-generator.min=1 --hop-price-random-generator.max=10
+java -jar shop-0.0.1-SNAPSHOT.jar --shop-price-random-generator.min=1 --shop-price-random-generator.max=10
 `
 
 
